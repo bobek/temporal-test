@@ -1,5 +1,6 @@
 echo currentBuild.getResult()
 echo currentBuild.getPreviousBuild()?.getResult()
+echo currentBuild.getBuildCauses()
 
 // if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')) {
 if (currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause')) {
