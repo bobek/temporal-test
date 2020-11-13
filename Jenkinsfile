@@ -2,6 +2,8 @@ echo currentBuild.getResult()
 echo currentBuild.getPreviousBuild()?.getResult()
 echo currentBuild.getBuildCauses().toString()
 
+String cron_schedule = BRANCH_NAME == "main" ? "* * * * *" : ""
+
 // if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')) {
 if (currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause')) {
   print "INFO: Branch Indexing, aborting job"
@@ -12,7 +14,7 @@ if (currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause')) {
 pipeline {
   agent any
   triggers {
-    cron('* * * * *')
+    cron(cron_schedule)
   }
 
 
