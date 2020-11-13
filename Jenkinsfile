@@ -1,3 +1,6 @@
+echo build.getResult()
+echo build.getPreviousBuild.getResult()
+
 // if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')) {
 if (currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause')) {
   print "INFO: Branch Indexing, aborting job"
@@ -26,3 +29,6 @@ pipeline {
         }
     }
 }
+
+echo build.getResult()
+echo build.getPreviousBuild.getResult()
