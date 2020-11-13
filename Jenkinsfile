@@ -1,4 +1,5 @@
-if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')) {
+// if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')) {
+if (currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause')) {
   print "INFO: Branch Indexing, aborting job"
   currentBuild.result = 'ABORTED'
   return
