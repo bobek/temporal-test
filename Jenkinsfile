@@ -1,5 +1,5 @@
 echo currentBuild.getResult()
-echo currentBuild.getPreviousBuild().getResult()
+echo currentBuild.getPreviousBuild()?.getResult()
 
 // if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')) {
 if (currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause')) {
@@ -31,4 +31,4 @@ pipeline {
 }
 
 echo currentBuild.getResult()
-echo currentBuild.getPreviousBuild().getResult()
+echo currentBuild.getPreviousBuild()?.getResult()
