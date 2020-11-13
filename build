@@ -1,4 +1,4 @@
 #!/bin/sh
 
 echo "Building with script"
-exit 1
+exit 0
