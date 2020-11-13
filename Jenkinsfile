@@ -10,7 +10,11 @@ if (currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause')) {
 }
 
 pipeline {
-    agent any
+  agent any
+  triggers {
+    cron('* * * * *')
+  }
+
 
     stages {
         stage('Build') {
