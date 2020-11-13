@@ -2,7 +2,7 @@ echo currentBuild.getResult()
 echo currentBuild.getPreviousBuild()?.getResult()
 echo currentBuild.getBuildCauses().toString()
 
-String cron_schedule = BRANCH_NAME == "main" ? "* * * * *" : ""
+String cron_schedule = BRANCH_NAME == "develop" ? "* * * * *" : ""
 
 // if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')) {
 if (currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause')) {
