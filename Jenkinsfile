@@ -29,6 +29,16 @@ pipeline {
             }
         }
     }
+
+    post {
+      always {
+        node(null) {
+          script {
+            echo "POST"
+          }
+        }
+      }
+    }
 }
 
 echo currentBuild.getResult()
