@@ -20,77 +20,17 @@ pipeline {
 
     stages {
         stage('Build') {
-        when {
-          beforeAgent true
-          anyOf {
-            allOf {
-              branch 'staging'
-              not { triggeredBy 'TimerTrigger' }
-            }
-            allOf {
-              branch 'trying'
-              not { triggeredBy 'TimerTrigger' }
-            }
-            allOf {
-              branch 'develop'
-              anyOf {
-                triggeredBy 'TimerTrigger'
-                triggeredBy cause: 'UserIdCause'
-              }
-            }
-          }
-        }
-
             steps {
                 echo 'Building..'
+                sh './build'
             }
         }
         stage('Test') {
-        when {
-          beforeAgent true
-          anyOf {
-            allOf {
-              branch 'staging'
-              not { triggeredBy 'TimerTrigger' }
-            }
-            allOf {
-              branch 'trying'
-              not { triggeredBy 'TimerTrigger' }
-            }
-            allOf {
-              branch 'develop'
-              anyOf {
-                triggeredBy 'TimerTrigger'
-                triggeredBy cause: 'UserIdCause'
-              }
-            }
-          }
-        }
             steps {
                 echo 'Testing..'
             }
         }
         stage('Deploy') {
-        when {
-          beforeAgent true
-          anyOf {
-            allOf {
-              branch 'staging'
-              not { triggeredBy 'TimerTrigger' }
-            }
-            allOf {
-              branch 'trying'
-              not { triggeredBy 'TimerTrigger' }
-            }
-            allOf {
-              branch 'develop'
-              anyOf {
-                triggeredBy 'TimerTrigger'
-                triggeredBy cause: 'UserIdCause'
-              }
-            }
-          }
-        }
             steps {
                 echo 'Deploying....'
             }
