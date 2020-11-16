@@ -50,7 +50,7 @@ pipeline {
         stage('Build') {
             when {
               beforeAngent true
-              noneOf {
+              not anyOf {
                 branch 'develop'
                 branch 'arne'
               }
