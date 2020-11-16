@@ -15,6 +15,13 @@ if (currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause')) {
 //  return
 }
 
+if (currentBuild.getBuildCauses('jenkins.branch.BranchIndexingCause') &&
+    BRANCH_NAME == "develop") {
+  print "INFO: Branch Indexing, aborting job"
+  currentBuild.result = 'ABORTED'
+  return
+}
+
 pipeline {
   agent any
   triggers {
