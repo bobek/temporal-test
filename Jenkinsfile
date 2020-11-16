@@ -22,8 +22,8 @@ def getLastNonAbortedBuild(build) {
   }
  }
 
-echo getLastNonAbortedBuild(currentBuild)?.toString()
-echo getLastNonAbortedBuild(currentBuild)?.getResult()
+echo getLastNonAbortedBuild(currentBuild.getPreviousBuild())?.toString()
+echo getLastNonAbortedBuild(currentBuild.getPreviousBuild())?.getResult()
 
 // if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')) {
 if (currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause')) {
