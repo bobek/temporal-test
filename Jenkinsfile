@@ -23,6 +23,7 @@ def getLastNonAbortedBuild(build) {
 }
 
 echo getLastNonAbortedBuild(currentBuild.getPreviousBuild())?.toString()
+echo getLastNonAbortedBuild(currentBuild.getPreviousBuild())?.getDisplayName()?.toString()
 echo getLastNonAbortedBuild(currentBuild.getPreviousBuild())?.getResult()
 
 // if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')) {
