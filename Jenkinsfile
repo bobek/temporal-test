@@ -11,7 +11,7 @@ String cron_schedule = BRANCH_NAME == "develop" ? "* * * * *" : ""
 
 
 def getLastNonAbortedBuild(build) {
-  if build == null {
+  if (build == null) {
     return null;
   }
 
