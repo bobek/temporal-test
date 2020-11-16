@@ -49,10 +49,12 @@ pipeline {
     stages {
         stage('Build') {
             when {
-              beforeAngent true
-              not anyOf {
-                branch 'develop'
-                branch 'arne'
+              beforeAgent true
+              not { 
+                anyOf {
+                  branch 'develop'
+                  branch 'arne'
+                }
               }
             }
             steps {
