@@ -20,7 +20,7 @@ def getLastNonAbortedBuild(build) {
   } else {
     return build;
   }
- }
+}
 
 echo getLastNonAbortedBuild(currentBuild.getPreviousBuild())?.toString()
 echo getLastNonAbortedBuild(currentBuild.getPreviousBuild())?.getResult()
@@ -48,6 +48,13 @@ pipeline {
 
     stages {
         stage('Build') {
+            when {
+              beforeAngent true
+              noneOf {
+                branch 'develop'
+                branch 'arne'
+              }
+            }
             steps {
                 echo 'Building..'
             }
