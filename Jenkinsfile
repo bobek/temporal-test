@@ -10,6 +10,21 @@ String cron_schedule = BRANCH_NAME == "develop" ? "* * * * *" : ""
 // [{"_class":"hudson.triggers.TimerTrigger$TimerTriggerCause","shortDescription":"Started by timer"}]
 
 
+def getLastNonAbortedBuild(build) {
+  if build == null {
+    return null;
+  }
+
+  if(build.result.toString().equals("ABORTED")) {
+    return getLastNonAbortedBuild(build.getPreviousBuild());
+  } else {
+    return build;
+  }
+ }
+
+echo getLastNonAbortedBuild(currentBuild)?.toString()
+echo getLastNonAbortedBuild(currentBuild)?.getResult()
+
 // if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')) {
 if (currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause')) {
   print "INFO: Branch Indexing, aborting job"
