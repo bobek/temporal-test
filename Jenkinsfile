@@ -1,7 +1,6 @@
 echo currentBuild.getResult()
 echo currentBuild.getPreviousBuild()?.getResult()
 echo currentBuild.getBuildCauses().toString()
-echo currentBuild.rawBuild.getCauses().toString()
 
 String cron_schedule = BRANCH_NAME == "develop" ? "* * * * *" : ""
 
