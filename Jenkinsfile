@@ -4,6 +4,10 @@ echo currentBuild.getBuildCauses().toString()
 
 String cron_schedule = BRANCH_NAME == "develop" ? "* * * * *" : ""
 
+// [{"_class":"jenkins.branch.BranchIndexingCause","shortDescription":"Branch indexing"}]
+// [{"_class":"hudson.triggers.TimerTrigger$TimerTriggerCause","shortDescription":"Started by timer"}]
+
+
 // if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')) {
 if (currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause')) {
   print "INFO: Branch Indexing, aborting job"
