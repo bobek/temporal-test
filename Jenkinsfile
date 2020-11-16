@@ -1,9 +1,11 @@
 echo currentBuild.getResult()
 echo currentBuild.getPreviousBuild()?.getResult()
 echo currentBuild.getBuildCauses().toString()
+echo currentBuild.getPreviousCompletedBuild()?.getResult()
 
 String cron_schedule = BRANCH_NAME == "develop" ? "* * * * *" : ""
 
+// [{"_class":"hudson.model.Cause$UserIdCause","shortDescription":"Started by user mayastor","userId":"mayastor","userName":"mayastor"}]
 // [{"_class":"jenkins.branch.BranchIndexingCause","shortDescription":"Branch indexing"}]
 // [{"_class":"hudson.triggers.TimerTrigger$TimerTriggerCause","shortDescription":"Started by timer"}]
 
